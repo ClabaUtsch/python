@@ -1,0 +1,530 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+
+:root {
+    --white:        #FFFFFF;
+    --off-white:    #F7F9FC;
+    --bg:           #EEF2F7;
+    --border:       #DDE3ED;
+    --border-soft:  #E8ECF4;
+
+    --blue-50:      #EFF6FF;
+    --blue-100:     #DBEAFE;
+    --blue-500:     #3B82F6;
+    --blue-600:     #2563EB;
+    --blue-700:     #1D4ED8;
+
+    --teal-50:      #F0FDFA;
+    --teal-100:     #CCFBF1;
+    --teal-500:     #14B8A6;
+    --teal-600:     #0D9488;
+
+    --red-50:       #FFF1F2;
+    --red-100:      #FFE4E6;
+    --red-400:      #F87171;
+    --red-600:      #DC2626;
+    --red-border:   #FECACA;
+
+    --green-400:    #4ADE80;
+    --green-500:    #22C55E;
+
+    --text-1:       #0F1C2E;
+    --text-2:       #3D5166;
+    --text-3:       #7A90A8;
+    --text-4:       #A8BDD0;
+
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body:    'Plus Jakarta Sans', system-ui, sans-serif;
+
+    --radius-sm:    8px;
+    --radius-md:    14px;
+    --radius-lg:    20px;
+    --shadow-sm:    0 1px 3px rgba(15,28,46,0.06), 0 1px 2px rgba(15,28,46,0.04);
+    --shadow-md:    0 4px 16px rgba(15,28,46,0.08), 0 1px 4px rgba(15,28,46,0.04);
+    --shadow-lg:    0 12px 40px rgba(15,28,46,0.10), 0 2px 8px rgba(15,28,46,0.05);
+}
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body {
+    background-color: var(--bg);
+    color: var(--text-1);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* === BACKGROUND PATTERN === */
+.bg-pattern {
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 10%, rgba(59,130,246,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(20,184,166,0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* === HEADER === */
+.site-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    box-shadow: var(--shadow-sm);
+}
+
+.header-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 28px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-mark {
+    width: 36px;
+    height: 36px;
+    background: var(--blue-600);
+    color: white;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    flex-shrink: 0;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-name {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-1);
+    line-height: 1.1;
+}
+
+.logo-tagline {
+    font-size: 11px;
+    color: var(--text-3);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+}
+
+/* === MAIN === */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 48px 28px 60px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    position: relative;
+    z-index: 1;
+}
+
+
+.hero {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
+    animation: fadeUp 0.5s ease both;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 46px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--text-1);
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+}
+
+.hero-title em {
+    font-style: italic;
+    color: var(--blue-600);
+}
+
+.hero-sub {
+    font-size: 15px;
+    color: var(--text-2);
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+
+.card {
+    background: var(--white);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+
+.card-form {
+    padding: 28px;
+    animation: fadeUp 0.5s 0.1s ease both;
+}
+
+.form-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.form-grupo {
+    flex: 1;
+}
+
+label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-4);
+    display: flex;
+    pointer-events: none;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 13px 14px 13px 42px;
+    background: var(--off-white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    font-family: var(--font-body);
+    color: var(--text-1);
+    font-weight: 400;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+input[type="text"]::placeholder { color: var(--text-4); }
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--blue-500);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+}
+
+button[type="submit"] {
+    flex-shrink: 0;
+    padding: 13px 22px;
+    background: var(--blue-600);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.25);
+    white-space: nowrap;
+}
+
+button[type="submit"]:hover {
+    background: var(--blue-700);
+    box-shadow: 0 4px 14px rgba(37,99,235,0.35);
+}
+
+button[type="submit"]:active { transform: scale(0.98); }
+
+button[type="submit"].loading {
+    opacity: 0.75;
+    cursor: wait;
+}
+
+/* === SUGESTÕES === */
+.sugestoes {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.sugestoes-label {
+    font-size: 12px;
+    color: var(--text-3);
+    font-weight: 500;
+}
+
+.chip {
+    padding: 5px 12px;
+    background: var(--blue-50);
+    color: var(--blue-600);
+    border: 1px solid var(--blue-100);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.chip:hover {
+    background: var(--blue-100);
+    border-color: var(--blue-500);
+}
+
+/* === CARD ERRO === */
+.card-erro {
+    padding: 22px 26px;
+    background: var(--red-50);
+    border-color: var(--red-border);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    animation: fadeUp 0.3s ease both;
+}
+
+.erro-icone {
+    color: var(--red-600);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.erro-corpo strong {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--red-600);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.erro-corpo p {
+    font-size: 13px;
+    color: #9B1C1C;
+    line-height: 1.6;
+}
+
+.erro-dica {
+    margin-top: 8px !important;
+    color: var(--text-3) !important;
+}
+
+.erro-dica strong {
+    color: var(--text-2) !important;
+    font-size: 12px !important;
+    display: inline !important;
+}
+
+/* === RESULTADO === */
+.resultado-section {
+    animation: fadeUp 0.4s ease both;
+}
+
+.resultado-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    padding: 0 4px;
+}
+
+.resultado-titulo {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--text-1);
+    letter-spacing: -0.5px;
+}
+
+.resultado-count {
+    font-size: 13px;
+    color: var(--text-3);
+    margin-top: 3px;
+    font-weight: 400;
+}
+
+.resultado-badge {
+    background: var(--teal-50);
+    color: var(--teal-600);
+    border: 1px solid var(--teal-100);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.resultado-badge::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    background: var(--teal-500);
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+}
+
+/* === GRID MÉDICOS === */
+.medicos-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.card-medico {
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    cursor: default;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    animation: fadeUp 0.4s ease both;
+}
+
+.card-medico:hover {
+    border-color: var(--blue-100);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.medico-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue-100), var(--blue-50));
+    border: 2px solid var(--blue-100);
+    color: var(--blue-700);
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: -1px;
+}
+
+.medico-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.medico-nome {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-1);
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.medico-crm {
+    font-size: 12px;
+    color: var(--text-3);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.planos-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.plano-tag {
+    padding: 3px 10px;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-2);
+    white-space: nowrap;
+}
+
+.medico-action {
+    flex-shrink: 0;
+}
+
+.disponivel-dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--green-500);
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
+    animation: pulse 2.5s ease infinite;
+}
+
+/* === FOOTER === */
+.site-footer {
+    text-align: center;
+    padding: 22px 24px;
+    font-size: 12px;
+    color: var(--text-4);
+    border-top: 1px solid var(--border);
+    background: var(--white);
+    position: relative;
+    z-index: 1;
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(0.75); }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 560px) {
+    .form-row { flex-direction: column; }
+    button[type="submit"] { width: 100%; justify-content: center; }
+    .container { padding: 32px 18px 48px; }
+    .card-form { padding: 22px 18px; }
+    .card-medico { padding: 18px; }
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Consultas Médicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <div class="bg-pattern"></div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="logo" href="/">
+                <div class="logo-mark">✚</div>
+                <div class="logo-text">
+                    <span class="logo-name">ClinicaPlus</span>
+                    <span class="logo-tagline">Painel de Consultas</span>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+            <h1 class="hero-title">Encontre um <em>especialista</em></h1>
+            <p class="hero-sub">Digite a especialidade desejada para ver os médicos disponíveis, CRM e planos aceitos.</p>
+        </section>
+
+        <div class="card card-form">
+            <form method="POST" id="form-consulta">
+                <div class="form-row">
+                    <div class="form-grupo">
+                        <label for="especialidade">Especialidade Médica</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                            </span>
+                            <input
+                                type="text"
+                                id="especialidade"
+                                name="especialidade"
+                                placeholder="Ex: Cardiologia, Pediatria, Dermatologia"
+                                autocomplete="off"
+                            >
+                        </div>
+                    </div>
+                    <button type="submit" id="btn-buscar">
+                        <span class="btn-text">Buscar</span>
+                        <span class="btn-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </span>
+                    </button>
+                </div>
+            </form>
+            <div class="sugestoes">
+                <span class="sugestoes-label">Tente:</span>
+                <button class="chip" onclick="preencherBusca('Cardiologia')">Cardiologia</button>
+                <button class="chip" onclick="preencherBusca('Pediatria')">Pediatria</button>
+                <button class="chip" onclick="preencherBusca('Dermatologia')">Dermatologia</button>
+            </div>
+        </div>
+
+        {% if erro %}
+        <div class="card card-erro" role="alert">
+            <div class="erro-icone">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="erro-corpo">
+                <strong>Especialidade não encontrada</strong>
+                <p>{{ erro }}</p>
+                <p class="erro-dica">Especialidades disponíveis: <strong>Cardiologia</strong>, <strong>Pediatria</strong> e <strong>Dermatologia</strong>.</p>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if especialidade and medicos %}
+        <section class="resultado-section">
+            <div class="resultado-header">
+                <div>
+                    <h2 class="resultado-titulo">{{ especialidade }}</h2>
+                    <p class="resultado-count">{{ medicos | length }} médico{% if medicos | length > 1 %}s{% endif %} encontrado{% if medicos | length > 1 %}s{% endif %}</p>
+                </div>
+                <div class="resultado-badge">Disponível</div>
+            </div>
+
+            <div class="medicos-grid">
+                {% for medico in medicos %}
+                <div class="card card-medico" style="animation-delay: {{ loop.index0 * 0.08 }}s">
+                    <div class="medico-avatar">
+                        {{ medico.nome[3] | upper }}
+                    </div>
+                    <div class="medico-info">
+                        <h3 class="medico-nome">{{ medico.nome }}</h3>
+                        <span class="medico-crm">CRM {{ medico.crm }}</span>
+                        <div class="planos-lista">
+                            {% for plano in medico.planos %}
+                            <span class="plano-tag">{{ plano }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="medico-action">
+                        <span class="disponivel-dot"></span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+    </main>
+
+    <footer class="site-footer">
+        <p>Painel de Consultas Médicas &mdash; Atividade Flask &mdash; Dados fictícios para fins educacionais</p>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
