@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}Cinema{% endblock %}
+
+{% block content %}
+<h1>Programação do Cinema</h1>
+<p><a class="btn" href="{{ url_for('cinema.cadastrar_sessao') }}">+ Nova sessão</a></p>
+
+{# TODO ALUNO: {% if sessoes %} e {% for sessao in sessoes %} #}
+<table>
+    <thead>
+        <tr>
+            <th>Filme</th>
+            <th>Sala</th>
+            <th>Data/hora</th>
+            <th>Preço</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <!-- TODO: sessao.filme.titulo, sessao.sala.numero, sessao.data_hora, sessao.preco -->
+            <td>{{sessao.filme.titulo}}</td>
+            <td>{{sessao.sala.numero}}</td>
+            <td>{{sessao.data_hora}}</td>
+            <td>{{sessao.preco}}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}
