@@ -1,0 +1,59 @@
+================================================================================
+AulaSQLalchemy — Flask + SQLAlchemy (simples, SEM MVC)
+================================================================================
+
+Objetivo
+--------
+Aprender a criar banco SQLite e fazer CRUD usando Flask e Flask-SQLAlchemy
+em um projeto pequeno (tudo começa no app.py).
+
+Estrutura
+---------
+AulaSQLalchemy/
+  app.py              → Flask, Model Aluno, rotas CRUD
+  templates/
+    lista.html        → Read (listar)
+    formulario.html   → Create e Update
+  static/css/style.css
+  alunos.db           → gerado ao rodar
+  requirements.txt
+
+Instalação e execução
+---------------------
+cd flask/AulaSQLalchemy
+pip install -r requirements.txt
+python app.py
+
+Abrir: http://127.0.0.1:5000/
+
+Rotas (CRUD)
+------------
+GET  /                      → Listar alunos (Read)
+GET  /cadastrar             → Formulário novo
+POST /cadastrar             → Salvar novo (Create)
+GET  /editar/<id>           → Formulário edição
+POST /editar/<id>           → Salvar alteração (Update)
+POST /excluir/<id>          → Remover (Delete)
+
+Conceitos no app.py
+-------------------
+• db = SQLAlchemy(app)     → liga Flask ao banco
+• class Aluno(db.Model)    → tabela alunos
+• db.create_all()          → cria tabelas
+• db.session.add()       → Create
+• Aluno.query.all()        → Read
+• aluno.nome = ...         → Update (antes do commit)
+• db.session.delete()      → Delete
+• db.session.commit()      → grava no .db
+
+Próximo passo na grade
+----------------------
+Aula 10 — mesmo stack, mas organizado em MVC (models / controllers / views).
+
+Exercícios
+----------
+1) Adicione campo telefone no Model e nos templates.
+2) Ordene a lista por id decrescente.
+3) Na lista, mostre quantos alunos existem.
+
+================================================================================

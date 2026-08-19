@@ -1,0 +1,24 @@
+# =============================================================================
+# Dependências da Aula 16 (pip install -r requirements.txt)
+# =============================================================================
+#
+# flask>=3.0
+#   • Servidor web e rotas da SUA API (jsonify, Blueprint, app.run).
+#   • Não baixa o site — só expõe /api/selecao para o Postman.
+#
+# requests>=2.31
+#   • Cliente HTTP para acessar https://www.espn.com.br/futebol/ no Service.
+#   • Métodos: get, post, put...; aqui usamos só requests.get.
+#
+# beautifulsoup4>=4.12
+#   • Parse de HTML (tags, links, títulos).
+#   • Import no código: from bs4 import BeautifulSoup
+#
+# Também usamos (já vêm com o Python, sem pip):
+#   re, urllib.parse, typing
+#
+# =============================================================================
+
+flask>=3.0
+requests>=2.31
+beautifulsoup4>=4.12
