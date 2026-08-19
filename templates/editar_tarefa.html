@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Tarefa{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-body">
+                <h3><i class="bi bi-pencil"></i> Editar Tarefa</h3>
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Título</label>
+                        <input type="text" name="titulo" class="form-control" value="{{ tarefa['titulo'] }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descrição</label>
+                        <textarea name="descricao" class="form-control" rows="3">{{ tarefa['descricao'] or '' }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <select name="status" class="form-select">
+                            <option value="pendente" {% if tarefa['status'] == 'pendente' %}selected{% endif %}>Pendente</option>
+                            <option value="em andamento" {% if tarefa['status'] == 'em andamento' %}selected{% endif %}>Em andamento</option>
+                            <option value="concluida" {% if tarefa['status'] == 'concluida' %}selected{% endif %}>Concluída</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save"></i> Atualizar
+                    </button>
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

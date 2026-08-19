@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Progresso{% endblock %}
+
+{% block content %}
+<h2 class="mb-4"><i class="bi bi-bar-chart"></i> Dashboard de Progresso</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <h5>Tarefas por Status (Barras)</h5>
+                <canvas id="grafico-barras"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <h5>Tarefas por Status (Pizza)</h5>
+                <canvas id="grafico-pizza"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="{{ url_for('dashboard') }}" class="btn btn-secondary">
+    <i class="bi bi-arrow-left"></i> Voltar
+</a>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    fetch('/api/stats')
+        .then(resposta => resposta.json())
+        .then(dados => {
+            // grafico de barras
+            new Chart(document.getElementById('grafico-barras'), {
+                type: 'bar',
+                data: {
+                    labels: ['Pendente', 'Em andamento', 'Concluída'],
+                    datasets: [{
+                        label: 'Quantidade',
+                        data: [dados.pendente, dados['em andamento'], dados.concluida],
+                        backgroundColor: ['#ffc107', '#0d6efd', '#198754']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true, ticks: { stepSize: 1 } }
+                    }
+                }
+            });
+
+            // grafico de pizza
+            new Chart(document.getElementById('grafico-pizza'), {
+                type: 'pie',
+                data: {
+                    labels: ['Pendente', 'Em andamento', 'Concluída'],
+                    datasets: [{
+                        data: [dados.pendente, dados['em andamento'], dados.concluida],
+                        backgroundColor: ['#ffc107', '#0d6efd', '#198754']
+                    }]
+                },
+                options: { responsive: true }
+            });
+        });
+</script>
+{% endblock %}

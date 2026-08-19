@@ -1,0 +1,45 @@
+/* cores dos cards por status */
+.card-pendente {
+    background-color: #fff3cd;
+    border-color: #ffc107;
+}
+
+.card-andamento {
+    background-color: #cfe2ff;
+    border-color: #0d6efd;
+}
+
+.card-concluida {
+    background-color: #d1e7dd;
+    border-color: #198754;
+}
+
+/* modo escuro */
+body.modo-escuro {
+    background-color: #212529;
+    color: #f8f9fa;
+}
+
+body.modo-escuro .card {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+body.modo-escuro .card-pendente {
+    background-color: #664d03;
+    color: #fff;
+}
+
+body.modo-escuro .card-andamento {
+    background-color: #084298;
+    color: #fff;
+}
+
+body.modo-escuro .card-concluida {
+    background-color: #0f5132;
+    color: #fff;
+}
+
+body.modo-escuro .text-muted {
+    color: #adb5bd !important;
+}
